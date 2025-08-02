@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Sudoku - Games for Senior</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body {
+    margin: 0;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #f0f0f0, #e0e0e0);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+h1 {
+    margin-bottom: 20px;
+    color: #333;
+}
+.sudoku {
+    display: grid;
+    grid-template-columns: repeat(9, 40px);
+    grid-template-rows: repeat(9, 40px);
+    gap: 2px;
+}
+.cell {
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    font-size: 18px;
+    border: 1px solid #999;
+    background: #fff;
+}
+.cell:focus {
+    outline: 2px solid #007BFF;
+}
+.prefilled {
+    background: #ddd;
+    font-weight: bold;
+}
+.bold-border {
+    border-width: 2px;
+}
+.btns {
+    margin-top: 20px;
+    display: flex;
+    gap: 15px;
+}
+button {
+    padding: 10px 20px;
+    background: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+button:hover {
+    background: #0056b3;
+}
+#message {
+    margin-top: 15px;
+    font-size: 16px;
+    color: green;
+}
+</style>
+</head>
+<body>
+
+<h1>Sudoku</h1>
+
+<div class="sudoku" id="sudokuBoard"></div>
+
+<div class="btns">
+    <button onclick="checkSudoku()">Check</button>
+    <button onclick="window.location.href='index.html'">Back to Home</button>
+</div>
+
+<div id="message"></div>
+
+<script>
+// Sample puzzle (0 means blank)
+const puzzle = [
+    [5, 3, 0, 0, 7, 0, 0, 0, 0],
+    [6, 0, 0, 1, 9, 5, 0, 0, 0],
+    [0, 9, 8, 0, 0, 0, 0, 6, 0],
+    
+    [8, 0, 0, 0, 6, 0, 0, 0, 3],
+    [4, 0, 0, 8, 0, 3, 0, 0, 1],
+    [7, 0, 0, 0, 2, 0, 0, 0, 6],
+    
+    [0, 6, 0, 0, 0, 0, 2, 8, 0],
+    [0, 0, 0, 4, 1, 9, 0, 0, 5],
+    [0, 0, 0, 0, 8, 0, 0, 7, 9]
+];
+
+function createSudokuBoard() {
+    const board = document.getElementById('sudokuBoard');
+    for (let row = 0; row < 9; row++) {
+        for (let col = 0; col < 9; col++) {
+            const input = document.createElement('input');
+            input.type = 'text';
+            input.maxLength = 1;
+            input.classList.add('cell');
+            
+            if (puzzle[row][col] !== 0) {
+                input.value = puzzle[row][col];
+                input.disabled = true;
+                input.classList.add('prefilled');
+            }
+
+            // Bold borders
+            if (col % 3 === 0) input.style.borderLeftWidth = '2px';
+            if (row % 3 === 0) input.style.borderTopWidth = '2px';
+            if (col === 8) input.style.borderRightWidth = '2px';
+            if (row === 8) input.style.borderBottomWidth = '2px';
+
+            input.dataset.row = row;
+            input.dataset.col = col;
+
+            // Allow only numbers 1-9
+            input.addEventListener('input', () => {
+                input.value = input.value.replace(/[^1-9]/g, '');
+            });
+
+            board.appendChild(input);
+        }
+    }
+}
+
+function checkSudoku() {
+    const inputs = document.querySelectorAll('.cell');
+    const grid = Array.from({ length: 9 }, () => Array(9).fill(0));
+
+    inputs.forEach(input => {
+        const row = parseInt(input.dataset.row);
+        const col = parseInt(input.dataset.col);
+        grid[row][col] = parseInt(input.value) || 0;
+    });
+
+    if (validateSudoku(grid)) {
+        document.getElementById('message').textContent = "✅ Congratulations! Sudoku is correct.";
+    } else {
+        document.getElementById('message').textContent = "❌ Incorrect Sudoku. Please check your inputs.";
+    }
+}
+
+function validateSudoku(grid) {
+    for (let i = 0; i < 9; i++) {
+        const rowSet = new Set();
+        const colSet = new Set();
+        const boxSet = new Set();
+
+        for (let j = 0; j < 9; j++) {
+            // Row check
+            if (grid[i][j]) {
+                if (rowSet.has(grid[i][j])) return false;
+                rowSet.add(grid[i][j]);
+            }
+
+            // Column check
+            if (grid[j][i]) {
+                if (colSet.has(grid[j][i])) return false;
+                colSet.add(grid[j][i]);
+            }
+
+            // 3x3 Box check
+            const rowIdx = 3 * Math.floor(i / 3) + Math.floor(j / 3);
+            const colIdx = 3 * (i % 3) + (j % 3);
+            if (grid[rowIdx][colIdx]) {
+                if (boxSet.has(grid[rowIdx][colIdx])) return false;
+                boxSet.add(grid[rowIdx][colIdx]);
+            }
+        }
+    }
+    return true;
+}
+
+createSudokuBoard();
+</script>
+
+</body>
+</html>
