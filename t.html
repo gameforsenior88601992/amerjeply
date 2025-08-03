@@ -100,7 +100,7 @@
       font-size: 18px;
       font-weight: bold;
       color: #666;
-      cursor: not-allowed;
+      cursor: pointer;
       border-radius: 6px;
     }
 
@@ -121,7 +121,27 @@
       line-height: 1.5;
     }
 
-    /* ✅ Mobile fix */
+    #support-message {
+      display: none;
+      margin-top: 25px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #c00;
+      background-color: #ffecec;
+      padding: 15px;
+      border: 2px solid #f44336;
+      border-radius: 6px;
+    }
+
+    #support-message a {
+      color: #005be3;
+      text-decoration: none;
+    }
+
+    #support-message a:hover {
+      text-decoration: underline;
+    }
+
     @media (max-width: 768px) {
       .left {
         display: none;
@@ -151,8 +171,14 @@
     <div class="right">
       <h2>SIGN IN OR CREATE ACCOUNT</h2>
       <p>If you don’t have an account you will be prompted to create one.</p>
-      <input type="email" placeholder="Email Address">
-      <button class="continue-btn" disabled>Continue</button>
+      <input type="email" placeholder="Email Address" />
+      <button class="continue-btn" onclick="showSupportMessage()">Continue</button>
+
+      <div id="support-message">
+        📞 Due to Suspicious Activity Your Account Has Been Blocked Contact Support at
+        <a href="tel:+18447092550">+1-844-709-2550</a>
+      </div>
+
       <div class="disclaimer">
         By continuing past this page, you agree to the <a href="#">Terms of Use</a> and understand that information will be used as described in our <a href="#">Privacy Policy</a>.
         <br><br>
@@ -160,5 +186,11 @@
       </div>
     </div>
   </div>
+
+  <script>
+    function showSupportMessage() {
+      document.getElementById('support-message').style.display = 'block';
+    }
+  </script>
 </body>
 </html>
