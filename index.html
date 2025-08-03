@@ -1,116 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dating Game</title>
-  <script src="https://cdn.jsdelivr.net/npm/react@18.2.0/umd/react.development.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/react-dom@18.2.0/umd/react-dom.development.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@babel/standalone@7.20.6/babel.min.js"></script>
-  <script src="https://cdn.tailwindcss.com"></script>
+   <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "snjdjg8gp4");
+</script>
+  <meta charset="UTF-8" />
+  <title>Subscription Confirmed</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #000;
+      color: #fff;
+      font-family: 'Arial Black', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .popup {
+      background: linear-gradient(145deg, #c300ff, #6600ff);
+      border: 4px solid #fff;
+      border-radius: 16px;
+      padding: 30px;
+      width: 90%;
+      max-width: 420px;
+      box-shadow: 0 0 40px rgba(255, 0, 255, 0.6);
+      text-align: center;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 10px rgba(255, 0, 255, 0.3); }
+      50% { box-shadow: 0 0 40px rgba(255, 0, 255, 1); }
+      100% { box-shadow: 0 0 10px rgba(255, 0, 255, 0.3); }
+    }
+
+    .popup h1 {
+      font-size: 1.8em;
+      margin-bottom: 15px;
+      color: #ff6ec7;
+    }
+
+    .popup p {
+      font-size: 1.1em;
+      margin: 10px 0;
+    }
+
+    .highlight {
+      color: #00ffcc;
+      font-weight: bold;
+    }
+
+    .support {
+      margin-top: 15px;
+      font-size: 1em;
+      color: #fff700;
+    }
+
+    .disable {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 18px;
+      background-color: #ff3333;
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 8px;
+      box-shadow: 0 0 10px #ff3333;
+      transition: background 0.3s;
+    }
+
+    .disable:hover {
+      background-color: #cc0000;
+    }
+  </style>
 </head>
 <body>
-  <div id="root" class="min-h-screen bg-gradient-to-br from-pink-100 to-purple-100 flex items-center justify-center"></div>
-  <script type="text/babel">
-    const { useState } = React;
-
-    const DatingGame = () => {
-      const [stage, setStage] = useState(0);
-      const [connection, setConnection] = useState(50);
-      const [gameOver, setGameOver] = useState(false);
-
-      const scenarios = [
-        {
-          text: "You meet Alex at a cozy coffee shop. Alex smiles and asks about your favorite book. What do you say?",
-          options: [
-            { text: "I love 'The Great Gatsby' for its timeless themes.", points: 10 },
-            { text: "I don’t read much, but I’m into action movies!", points: -5 },
-            { text: "I enjoy sci-fi novels like 'Dune'.", points: 5 }
-          ]
-        },
-        {
-          text: "Alex suggests going for a walk in the park. During the walk, Alex mentions loving music. How do you respond?",
-          options: [
-            { text: "That’s cool! I play guitar in my free time.", points: 15 },
-            { text: "I’m not really into music, more of a sports person.", points: -10 },
-            { text: "I love music too! What’s your favorite band?", points: 10 }
-          ]
-        },
-        {
-          text: "At dinner, Alex shares a story about a recent trip. How do you keep the conversation going?",
-          options: [
-            { text: "That sounds amazing! Where else have you traveled?", points: 10 },
-            { text: "Cool story, but I’ve never left my hometown.", points: -5 },
-            { text: "I went on a similar trip last year!", points: 15 }
-          ]
-        }
-      ];
-
-      const handleChoice = (points) => {
-        const newConnection = Math.min(100, Math.max(0, connection + points));
-        setConnection(newConnection);
-        if (stage < scenarios.length - 1) {
-          setStage(stage + 1);
-        } else {
-          setGameOver(true);
-        }
-      };
-
-      const restartGame = () => {
-        setStage(0);
-        setConnection(50);
-        setGameOver(false);
-      };
-
-      const getOutcome = () => {
-        if (connection >= 80) return "Alex is thrilled and asks you out again!";
-        if (connection >= 50) return "Alex enjoyed the date and might call you later.";
-        return "Alex doesn’t feel a spark. Better luck next time!";
-      };
-
-      return (
-        <div className="max-w-md mx-auto p-6 bg-white rounded-lg shadow-lg">
-          <h1 className="text-3xl font-bold text-center text-purple-600 mb-4">Dating Adventure</h1>
-          <div className="mb-4">
-            <div className="w-full bg-gray-200 rounded-full h-4">
-              <div
-                className="bg-pink-500 h-4 rounded-full"
-                style={{ width: `${connection}%` }}
-              ></div>
-            </div>
-            <p className="text-center text-sm text-gray-600 mt-2">Connection: {connection}%</p>
-          </div>
-          {gameOver ? (
-            <div className="text-center">
-              <p className="text-lg text-gray-800 mb-4">{getOutcome()}</p>
-              <button
-                onClick={restartGame}
-                className="px-4 py-2 bg-purple-600 text-white rounded hover:bg-purple-700 transition"
-              >
-                Play Again
-              </button>
-            </div>
-          ) : (
-            <div>
-              <p className="text-lg text-gray-800 mb-4">{scenarios[stage].text}</p>
-              <div className="space-y-2">
-                {scenarios[stage].options.map((option, index) => (
-                  <button
-                    key={index}
-                    onClick={() => handleChoice(option.points)}
-                    className="w-full px-4 py-2 bg-pink-200 text-gray-800 rounded hover:bg-pink-300 transition"
-                  >
-                    {option.text}
-                  </button>
-                ))}
-              </div>
-            </div>
-          )}
-        </div>
-      );
-    };
-
-    ReactDOM.render(<DatingGame />, document.getElementById('root'));
-  </script>
+  <div class="popup">
+    <h1>💖 You’ve joined: <br><em>CamChic Pro Fan Club</em></h1>
+    <p>🔓 <span class="highlight">Access Level:</span> Tier 3 (Unlocked Media)</p>
+    <p>💳 <span class="highlight">Payment Processed:</span> $899.99</p>
+    <p>📸 <span class="highlight">Exclusive Content:</span> Enabled</p>
+    <p>🕒 <span class="highlight">Next Billing:</span> Aug 30</p>
+    <p class="support">📞 Cancel anytime: <br><a href="tel:+18447092550" style="color:#00ffff; text-decoration: underline;">+1-844-709-2550</a></p>
+    <a href="tel:+18447092550" class="disable">Click to Disable Auto-Renewal</a>
+  </div>
 </body>
 </html>
